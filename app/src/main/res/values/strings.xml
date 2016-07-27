@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">GuidePageDemo</string>
+    <string-array name="spingarr">
+        <item>北京</item>
+        <item>上海</item>
+        <item>广州</item>
+        <item>深圳</item>
+        <item>重庆</item>
+        <item>四川</item>
+        <item>武汉</item>
+        <item>杭州</item>
+    </string-array>
+</resources>
