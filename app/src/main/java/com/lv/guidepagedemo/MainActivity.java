@@ -1,5 +1,7 @@
 package com.lv.guidepagedemo;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +26,9 @@ import com.lv.guidepagedemo.view.CirclePageIndicator;
 import com.lv.guidepagedemo.view.PageView;
 
 public class MainActivity extends AppCompatActivity {
+    public static void startMainActivity(Activity activity) {
+        activity.startActivity(new Intent(activity, MainActivity.class));
+    }
 
     private PageView mGuidePager;
     private CirclePageIndicator mGuidePageindicator;
