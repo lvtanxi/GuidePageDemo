@@ -8,8 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
-import com.jaeger.library.StatusBarUtil;
-
 /**
  * User: 吕勇
  * Date: 2016-08-11
@@ -24,7 +22,7 @@ public class WelcomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         initView();
-        StatusBarUtil.setTranslucentForImageView(this,0,mIvEntry);
+       // StatusBarUtil.setTranslucentForImageView(this,0,mIvEntry);
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(mIvEntry, "scaleX", 1f, 1.12f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(mIvEntry, "scaleY", 1f, 1.12f);
         AnimatorSet animatorSet = new AnimatorSet();

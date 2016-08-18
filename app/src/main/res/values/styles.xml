@@ -10,5 +10,6 @@
     <style name="AppTheme.WelcomeStyle">
         <item name="android:windowBackground">@mipmap/welcomimg1</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 </resources>
