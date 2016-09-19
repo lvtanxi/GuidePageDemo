@@ -25,6 +25,8 @@ import com.lv.guidepagedemo.anim.ZoomOutPageTransformer;
 import com.lv.guidepagedemo.view.CirclePageIndicator;
 import com.lv.guidepagedemo.view.PageView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
     public static void startMainActivity(Activity activity) {
         activity.startActivity(new Intent(activity, MainActivity.class));
@@ -35,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private LBasePagerAdapter<Integer> mPagerAdapter;
     private RelativeLayout.LayoutParams mParams;
     private Spinner mSpinner;
+    private View mView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -49,20 +53,20 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         mGuidePager = (PageView) findViewById(R.id.guide_pager);
         mGuidePageindicator = (CirclePageIndicator) findViewById(R.id.guide_pageindicator);
-        mParams=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
-        mPagerAdapter=new LBasePagerAdapter<Integer>() {
+        mParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        mPagerAdapter = new LBasePagerAdapter<Integer>() {
             @Override
             public View newView(Integer integer) {
-                ImageView imageView=new ImageView(MainActivity.this);
+                ImageView imageView = new ImageView(MainActivity.this);
                 imageView.setImageResource(integer);
                 imageView.setLayoutParams(mParams);
                 return imageView;
             }
         };
-        mPagerAdapter.bindData(R.mipmap.tut_page_1_background,R.mipmap.tut_page_1_front,R.mipmap.tut_page_4_background,R.mipmap.tut_page_4_foreground,R.mipmap.tut_page_3_foreground);
+        mPagerAdapter.bindData(R.mipmap.tut_page_1_background, R.mipmap.tut_page_1_front, R.mipmap.tut_page_4_background, R.mipmap.tut_page_4_foreground, R.mipmap.tut_page_3_foreground);
         mGuidePager.setAdapter(mPagerAdapter);
         mGuidePageindicator.setViewPager(mGuidePager);
-        mSpinner= (Spinner) findViewById(R.id.guide_spinner);
+        mSpinner = (Spinner) findViewById(R.id.guide_spinner);
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -74,9 +78,24 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        mView = findViewById(R.id.tonew);
+        mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int max = 20;
+                int min = 10;
+                Random random = new Random();
+                int s = random.nextInt(max) % (max - min + 1) + min;
+                if (s % 2 == 0) {
+                    ViewPageGalleryActivity.startViewPageGalleryActivity(MainActivity.this);
+                    return;
+                }
+                ViewPagerCards.startViewPagerCards(MainActivity.this);
+            }
+        });
     }
 
-    public void setPageTransformer(int position){
+    public void setPageTransformer(int position) {
         switch (position) {
             case 0:
                 mGuidePager.setPageTransformer(true, new DefaultTransformer());

@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <Spinner
         android:id="@+id/guide_spinner"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:entries="@array/spingarr"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -32,5 +34,17 @@
             app:radius="6dp"
             app:strokeColor="@android:color/holo_green_light"
             app:strokeWidth="0dp"/>
+
+        <Button
+            android:id="@+id/tonew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:padding="10dp"
+            android:text="ViewPageGalleryActivity or ViewPagerCards "
+            android:layout_below="@id/guide_pageindicator"
+            android:layout_centerHorizontal="true"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"/>
     </RelativeLayout>
 </LinearLayout>
