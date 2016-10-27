@@ -3,9 +3,11 @@ package com.lv.guidepagedemo;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 
 /**
@@ -20,6 +22,7 @@ public class WelcomActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        changeTooabar();
         setContentView(R.layout.activity_welcome);
         initView();
        // StatusBarUtil.setTranslucentForImageView(this,0,mIvEntry);
@@ -57,5 +60,14 @@ public class WelcomActivity extends AppCompatActivity {
 
     private void initView() {
         mIvEntry = (ImageView) findViewById(R.id.iv_entry);
+    }
+
+    private void changeTooabar() {
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        }
     }
 }
